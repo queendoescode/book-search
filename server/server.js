@@ -5,7 +5,6 @@ const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
-const routes = require('./routes');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -25,7 +24,8 @@ const startApolloServer = async () => {
     context: authMiddleware
   }));
 
-  app.use(routes);
+  // These will be replaced by GraphQL 
+  //app.use(routes);
 
   // if we're in production, serve client/build as static assets
   if (process.env.NODE_ENV === 'production') {

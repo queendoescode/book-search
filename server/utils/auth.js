@@ -38,7 +38,7 @@ module.exports = {
     }
 
     // send to next endpoint
-    next();
+    return req; // TODO: Why can't we use next() here? 
   },
   signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };

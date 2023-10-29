@@ -34,6 +34,23 @@ const resolvers = {
 
       return { token, user };
     },
+    saveBook: async (parent, {authors, description, title, bookId, image, link}, context) => {
+      // Book is a subdocument
+      // it's used for the savedBooks array inside a User document
+
+      const user = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { 
+          $addToSet: { 
+            savedBooks: {
+              authors, description, title, bookId, image, link
+            } 
+          } 
+        },
+        { new: true }
+      );
+      return user;
+    }
   },
 };
 

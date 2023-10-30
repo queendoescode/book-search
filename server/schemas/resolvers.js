@@ -9,6 +9,11 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
+    // `context` is where we find the information 
+    // from the authentication token (e.g. user ID)
+    me: async (parent, args, context) => {
+      return User.findById(context.user._id);
+    },
   },
 
   Mutation: {

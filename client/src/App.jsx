@@ -7,6 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
+import authService from './utils/auth';
 
 import Navbar from './components/Navbar';
 
@@ -19,7 +20,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token && !authService.isTokenExpired(token) ? `Bearer ${token}` : '',
     },
   };
 });

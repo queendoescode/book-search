@@ -52,3 +52,18 @@ export const SAVE_BOOK = gql`
     }
   }
 `;
+
+/**
+ * This mutation removes a book from our collection of books.
+ */
+export const REMOVE_BOOK = gql`
+  mutation removeBook($bookId: String) {
+    removeBook(bookId: $bookId) {
+      _id
+      savedBooks {
+        bookId
+        title
+      }
+    }
+  }
+`;

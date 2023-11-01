@@ -18,5 +18,6 @@ Apollo Server and JSON Web Token authentication.
 
 ## Third Party Resources used by this site
 
-* None
+* Starter code provided by EdX Boot Camps LLC.
+
 
